@@ -11,11 +11,17 @@ app.use(cors());
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://10.10.2.145:27017/mydb';
 
+// Connect to MongoDB
 mongoose.connect(MONGO_URI)
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
 
+// Routes
 app.use('/api/users', userRoutes);
 
-app.listen(PORT, '0.0.0.0', () => console.log(`Backend running on port ${PORT}`));
+// ✅ Health check route (important for ALB)
+app.get('/', (req, res) => {
+  res.send('Backend is healthy!');
+});
 
+app.listen(PORT, '0.0.0.0', () => console.log(`Backend running on port ${PORT}`));
