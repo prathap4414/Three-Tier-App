@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://10.10.2.116:27017/mydb';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://10.10.2.145:27017/mydb';
 
 mongoose.connect(MONGO_URI)
   .then(() => console.log('Connected to MongoDB'))
