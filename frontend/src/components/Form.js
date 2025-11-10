@@ -8,7 +8,7 @@ function Form() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://EXTERNAL-ALB-1626484032.ap-south-1.elb.amazonaws.com:5000/api/users', { name, email });
+      await axios.post('http://EXTERNAL-ALB-1626484032.ap-south-1.elb.amazonaws.com:/api/users', { name, email });
       alert('Data submitted successfully!');
       setName('');
       setEmail('');
